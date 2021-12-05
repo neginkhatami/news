@@ -1,0 +1,14 @@
+@import url(shabnam.css);
+*{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+body{
+    direction: rtl;
+    font-family: Shabnam !important;
+    background-color: #FFFAF0;
+}
+a{
+    text-decoration: none;
+    color: unset;
+}

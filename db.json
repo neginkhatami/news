@@ -1,0 +1,13 @@
+{
+  "login": [
+  ],
+  "register": [
+    {
+      "name": "نگین",
+      "username": "خاتمی",
+      "email": "khatami@gmail.com",
+      "password": "9612131412",
+      "id": 1
+    }
+  ]
+}
