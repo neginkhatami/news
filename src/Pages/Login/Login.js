@@ -1,11 +1,16 @@
 import React , {useState} from 'react';
 import useStyle from "../Style";
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Input from "@material-ui/core/Input";
-import Button from "@material-ui/core/Button";
 import {loginApi} from "../../Api/api-auth";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Avatar from "@material-ui/core/Avatar";
+import Input from "@material-ui/core/Input";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import {Link} from "react-router-dom";
 
 
 const Login = () => {
@@ -20,6 +25,7 @@ const Login = () => {
         password : password
     };
 
+
     const handelLogin = () =>{
         if(!username || !password)
             return alert("اطلاعات خود را وارد کنید");
@@ -31,16 +37,26 @@ const Login = () => {
     };
     return (
         <div>
-            <Typography className={classes.title} variant={"h5"}>ورود به سایت</Typography>
-            <Paper elevation={5} className={classes.paper}>
-                <Grid contaner direction={"column"}>
-                    <Typography color="primary" className={classes.label}> نام کاربری :</Typography>
-                    <Input className={classes.input} value={username} onChange={e => setUsername(e.target.value)}/>
-                    <Typography color="primary" className={classes.label}>رمز عبور :</Typography>
-                    <Input className={classes.input} value={password} onChange={e => setPassword(e.target.value)}/>
-                    <Button className={classes.button} color="primary" onClick={handelLogin}>ورود</Button>
+            <Box className={classes.container}>
+                <Avatar className={classes.avatar}><LockOutlinedIcon/></Avatar>
+                <Typography className={classes.title} variant={"h5"} component={"h1"}>ورود</Typography>
+                <Box component="form" noValidate className={classes.form}>
+                    <Input className={classes.input} placeholder={"نام کاربری"} value={username} onChange={e => setUsername(e.target.value)}/>
+                    <Input placeholder={"رمز عبور"} value={password} onChange={e => setPassword(e.target.value)}/>
+                    <FormControlLabel className={classes.check}
+                        control={<Checkbox value="remember" color="primary" />} label="مرا بخاطر بسپار"/>
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.button} onClick={handelLogin}>ورود</Button>
+                    <Grid container className={classes.item}>
+                    <Grid item xs color="primary">
+                        <Link href="#"><Typography color="primary" className={classes.link}>فراموشی رمز عبور؟</Typography></Link>
+                    </Grid>
+                    <Grid item>
+                        <Link to={"/register"}>
+                            <Typography color="primary" style={{fontSize :"0.85rem"}}>ثبت نام</Typography></Link>
+                    </Grid>
                 </Grid>
-            </Paper>
+                </Box>
+            </Box>
         </div>
     );
 };
