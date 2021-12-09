@@ -1,11 +1,16 @@
 import React , {useState} from 'react';
 import useStyle from "../Style";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import {registerApi} from "../../Api/api-auth";
+import Avatar from "@material-ui/core/Avatar";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Box from "@material-ui/core/Box";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import {Link} from "react-router-dom";
 
 const Register = () => {
 
@@ -15,14 +20,12 @@ const Register = () => {
     const [usernameRegister, setUsernameRegister] = useState();
     const [emailRegister, setEmailRegister] = useState();
     const [passwordRegister, setPasswordRegister] = useState();
-    const [confPasswordRegister, setConfPasswordRegister] = useState();
 
     const data = {
         name : fullNameRegister,
         username : usernameRegister,
         email : emailRegister,
         password : passwordRegister,
-        confPassword : confPasswordRegister
     };
 
     const handelRegister = () => {
@@ -39,24 +42,26 @@ const Register = () => {
     };
 
     return (
-        <>
-            <Typography className={classes.title} variant={"h5"}>ثبت نام سایت</Typography>
-            <Paper elevation={5} className={classes.paper}>
-                <Grid contaner direction={"column"}>
-                    <Typography color="primary" className={classes.label}>نام کامل</Typography>
-                    <Input className={classes.input} value={fullNameRegister} onChange={e => setFullNameRegister(e.target.value)}/>
-                    <Typography color="primary" className={classes.label}>نام کاربری</Typography>
-                    <Input className={classes.input} value={usernameRegister} onChange={e => setUsernameRegister(e.target.value)}/>
-                    <Typography color="primary" className={classes.label}>ایمیل</Typography>
-                    <Input className={classes.input} value={emailRegister} onChange={e => setEmailRegister(e.target.value)}/>
-                    <Typography color="primary" className={classes.label}>رمز عبور</Typography>
-                    <Input className={classes.input} value={passwordRegister} onChange={e => setPasswordRegister(e.target.value)}/>
-                    <Typography color="primary" className={classes.label}>تکرار رمز عبور</Typography>
-                    <Input className={classes.input} value={confPasswordRegister} onChange={e => setConfPasswordRegister(e.target.value)}/>
-                    <Button className={classes.button} color="primary" onClick={handelRegister}>ثبت نام</Button>
-                </Grid>
-            </Paper>
-        </>
+        <div>
+            <Box className={classes.container}>
+                <Avatar className={classes.avatar}><LockOutlinedIcon/></Avatar>
+                <Typography className={classes.title} variant={"h5"} component={"h1"}>ثبت نام</Typography>
+                <Box component="form" noValidate className={classes.form}>
+                    <Input className={classes.input} placeholder={"نام و نام خانوادگی"} value={fullNameRegister} onChange={e => setFullNameRegister(e.target.value)}/>
+                    <Input className={classes.input} placeholder={"نام کاربری"} value={usernameRegister} onChange={e => setUsernameRegister(e.target.value)}/>
+                    <Input className={classes.input} placeholder={"ایمیل"} value={emailRegister} onChange={e => setEmailRegister(e.target.value)}/>
+                    <Input className={classes.input} placeholder={"رمز عبور"} value={passwordRegister} onChange={e => setPasswordRegister(e.target.value)}/>
+                    <FormControlLabel className={classes.check}
+                        control={<Checkbox value="remember" color="primary" />} label="با ورود در سایت شما شرایط و قوانین سایت را می‌پذیرم"/>
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.button} onClick={handelRegister}>ثبت نام</Button>
+                    <Grid container className={classes.item}>
+                        <Grid item xs color="primary">
+                            <Link to="/login"><Typography color="primary" className={classes.link1}>ورود</Typography></Link>
+                        </Grid>
+                    </Grid>
+                </Box>
+            </Box>
+        </div>
     );
 };
 
