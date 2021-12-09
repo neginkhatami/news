@@ -1,30 +1,47 @@
 import {makeStyles} from "@material-ui/styles";
 
 const useStyle = makeStyles(theme =>({
-    paper:{
-        width:"25rem",
-        margin:"5rem auto !important",
-        padding: " 2rem !important",
-        display:"flex",
-        flexDirection:"column"
+    container:{
+        marginTop: '4rem !important',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    avatar:{
+        backgroundColor : '#8B008B !important'
+    },
+    form:{
+        width : "350px",
+        textAlign : "center",
+        flexDirection : "column",
+        marginTop : "1.5rem !important"
     },
     title:{
-        color : theme.palette.primary.main,
-        marginTop : "4rem !important",
-        textAlign : "center",
-        fontWeight : "600 !important"
+        marginTop : "7px !important",
     },
     input:{
-        marginRight : " 6rem !important",
-    },
-    label:{
-        marginTop: "1rem !important",
+        marginBottom : " 2rem !important",
+
     },
     button:{
-        width: "80px",
-        height : "33px",
-        margin : "4rem 10rem 1rem 0 !important",
-        backgroundColor : "red !important"
+        marginTop: "2.5rem !important",
+        height : "30px",
+        fontSize : "15px",
+    },
+    item:{
+        marginTop : "1.5rem !important",
+        fontSize : "30px !important"
+    },
+    check:{
+        width : "100%",
+    },
+    link:{
+        fontSize : "0.85rem !important",
+        marginLeft : "11rem !important"
+    },
+    link1:{
+        fontSize : "0.85rem !important",
+        marginLeft : "20rem !important"
     }
 }));
 
